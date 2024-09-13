@@ -89,4 +89,21 @@ sudo systemctl status jenkins
   ```
 
 ---
+
+## **3. Jenkins Security Configuration**
+
+### **Step 1: Install Role-Based Strategy Plugin**
+- Install the **Role-Based Strategy** plugin from the Jenkins Plugin Manager.
+- Enable this plugin under **Configure Global Security**.
+
+### **Step 2: Create Users**
+- Go to **Manage Jenkins** → **Manage Users**.
+- Create two users, `user1` and `user2`.
+
+### **Step 3: Manage and Assign Roles**
+- **Manage Roles**:
+  - Define a **Global Role** (e.g., *company*) and add an employee group with read-only permissions for all users.
+  - Define **Item Roles** for developers (e.g., *developer group*) with the pattern `dev.*` (regular expressions). For example, for the job `dev_production`, give access to developers only.
+- **Node Role**:
+  - Define the **Master-Slave Node Role** for node management.
  
