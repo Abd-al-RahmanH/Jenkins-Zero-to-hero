@@ -1,4 +1,4 @@
-# Jenkins Installation Guide by Abdul Rahman H
+# Jenkins Installation Guide
 
 ## **1. Jenkins Installation on Windows**
 
@@ -27,3 +27,66 @@
   - Copy the password, paste it on the Jenkins setup page, and continue with the installation.
 
 ---
+
+## **2. Jenkins Installation on Linux (Ubuntu)**
+
+### **Step 1: Install Java**
+
+Jenkins requires **Java** to run. Install OpenJDK using the following commands:
+
+```bash
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+java -version   # To verify installation
+```
+
+### **Step 2: Add Jenkins Repository**
+
+1. Add Jenkins GPG key:
+   ```bash
+   curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+   ```
+
+2. Add the Jenkins repository:
+   ```bash
+   echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+   /etc/apt/sources.list.d/jenkins.list > /dev/null
+   ```
+
+### **Step 3: Install Jenkins**
+
+1. Update the package list:
+   ```bash
+   sudo apt update
+   ```
+
+2. Install Jenkins:
+   ```bash
+   sudo apt install jenkins -y
+   ```
+
+### **Step 4: Start Jenkins**
+
+After installation, start Jenkins and ensure it is running:
+
+```bash
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+```
+
+### **Step 5: Access Jenkins**
+
+- Jenkins will be running on port `8080`. To access it, open a browser and go to:
+  ```bash
+  http://<your_server_ip>:8080
+  ```
+
+- To get the initial admin password, run the following command:
+  ```bash
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  ```
+
+---
+ 
