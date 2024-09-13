@@ -177,4 +177,4 @@ sudo systemctl status jenkins
   - Jenkins stores credentials in an encrypted form. Look for the hashed password in the Jenkins configuration files.
   - Search for solutions in **StackOverflow** if you encounter issues.
 
----
+## Feel free to give it a  STAR
