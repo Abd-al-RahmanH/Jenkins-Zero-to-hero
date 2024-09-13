@@ -178,5 +178,3 @@ sudo systemctl status jenkins
   - Search for solutions in **StackOverflow** if you encounter issues.
 
 ---
-
-This format keeps everything crisp, easy to read, and well-organized for quick understanding and execution.
