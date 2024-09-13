@@ -159,4 +159,24 @@ sudo systemctl status jenkins
    - Define the **context path** (e.g., `http://<server-ip>:8080/sample`).
 
 ---
- 
+
+## **5. Jenkins Task - CLI, Notifications, and Decryption**
+
+### **Step 1: Jenkins Version Using CLI**
+- Use the Jenkins CLI to get the version of Jenkins:
+  ```bash
+  java -jar jenkins-cli.jar -s http://localhost:8080/ version
+  ```
+
+### **Step 2: Email Notifications**
+- Configure email notifications by installing the **Email Extension Plugin**.
+- Search for detailed instructions on YouTube for better understanding.
+
+### **Step 3: Find and Decrypt Deployer Password**
+- Locate and decrypt Jenkins deployer password hashes:
+  - Jenkins stores credentials in an encrypted form. Look for the hashed password in the Jenkins configuration files.
+  - Search for solutions in **StackOverflow** if you encounter issues.
+
+---
+
+This format keeps everything crisp, easy to read, and well-organized for quick understanding and execution.
