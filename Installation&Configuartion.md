@@ -106,4 +106,57 @@ sudo systemctl status jenkins
   - Define **Item Roles** for developers (e.g., *developer group*) with the pattern `dev.*` (regular expressions). For example, for the job `dev_production`, give access to developers only.
 - **Node Role**:
   - Define the **Master-Slave Node Role** for node management.
+
+### **Step 4: Assign Roles**
+- In **Global Roles**, assign `user1` and `user2` to the **employee** group.
+- In **Item Roles**, assign:
+  - `user1` to the **developer** group (can access dev jobs only).
+  - `user2` to the **tester** group (can access test jobs only).
+
+### **Step 5: Verify Role Assignment**
+- Log in as `user1` and `user2` to verify that they can only access their assigned jobs.
+
+---
+
+## **4. Jenkins-Tomcat Integration**
+
+### **Step 1: Install Apache Tomcat**
+
+- **Download Tomcat**: Get the `.tar.gz` file from the official website.
+- Use `wget` to download and extract the file:
+   ```bash
+   wget <tomcat-link>
+   tar -xvzf apache-tarfile.tar.gz
+   mv apache-tomcat /opt/
+   ```
+
+- **Change Jenkins Port Number** to avoid conflict with Tomcat:
+  ```bash
+  vi /etc/default/jenkins
+  # Change port from 8080 to any other available port
+  service jenkins restart
+  ```
+
+### **Step 2: Deploy a WAR File**
+
+1. Download a sample Java WAR file using `wget`:
+   ```bash
+   wget <java-war-file-link>
+   ```
+
+2. Copy the WAR file to Jenkins workspace:
+   ```bash
+   cd /var/lib/jenkins/workspaces/autodeployment
+   cp /path/to/sample.war .
+   ```
+
+3. **Install Tomcat Deployment Plugin**: Install **Deploy to Container** plugin in Jenkins.
+
+### **Step 3: Post Build Actions**
+- Configure **Post Build Actions**:
+   - Add **Tomcat Deployment**.
+   - Specify the `sample.war` file to deploy.
+   - Define the **context path** (e.g., `http://<server-ip>:8080/sample`).
+
+---
  
